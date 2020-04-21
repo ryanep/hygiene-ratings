@@ -2,7 +2,7 @@
 /* @ts-nocheck */
 /* eslint-disable */
 import { GraphQLResolveInfo } from 'graphql';
-import { CountryModel } from '../types/models';
+import { CountryModel, RegionModel } from '../types/models';
 import { ApolloContext } from '../graphql/context/types';
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = {
@@ -25,14 +25,26 @@ export type Country = {
   name: Scalars['String'];
 };
 
+export type Region = {
+  __typename?: 'Region';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   countries: Array<Maybe<Country>>;
   country: Country;
+  regions: Array<Maybe<Region>>;
+  region: Region;
 };
 
 export type QueryCountryArgs = {
-  id: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+};
+
+export type QueryRegionArgs = {
+  id: Scalars['ID'];
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -150,6 +162,7 @@ export type ResolversTypes = ResolversObject<{
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Country: ResolverTypeWrapper<CountryModel>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
+  Region: ResolverTypeWrapper<RegionModel>;
   Query: ResolverTypeWrapper<{}>;
 }>;
 
@@ -159,12 +172,22 @@ export type ResolversParentTypes = ResolversObject<{
   Boolean: Scalars['Boolean'];
   Country: CountryModel;
   ID: Scalars['ID'];
+  Region: RegionModel;
   Query: {};
 }>;
 
 export type CountryResolvers<
   ContextType = ApolloContext,
   ParentType extends ResolversParentTypes['Country'] = ResolversParentTypes['Country']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
+export type RegionResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['Region'] = ResolversParentTypes['Region']
 > = ResolversObject<{
   id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -184,12 +207,24 @@ export type QueryResolvers<
     ResolversTypes['Country'],
     ParentType,
     ContextType,
-    RequireFields<QueryCountryArgs, never>
+    RequireFields<QueryCountryArgs, 'id'>
+  >;
+  regions: Resolver<
+    Array<Maybe<ResolversTypes['Region']>>,
+    ParentType,
+    ContextType
+  >;
+  region: Resolver<
+    ResolversTypes['Region'],
+    ParentType,
+    ContextType,
+    RequireFields<QueryRegionArgs, 'id'>
   >;
 }>;
 
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   Country: CountryResolvers<ContextType>;
+  Region: RegionResolvers<ContextType>;
   Query: QueryResolvers<ContextType>;
 }>;
 

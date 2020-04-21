@@ -15,6 +15,7 @@ generates:
       contextType: ../graphql/context/types#ApolloContext
       mappers:
         Country: ../types/models#CountryModel
+        Region: ../types/models#RegionModel
       namingConvention:
         enumValues: change-case#upperCase
       showUnusedMappers: true

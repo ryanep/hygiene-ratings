@@ -3,7 +3,14 @@ type Country {
   name: String!
 }
 
+type Region {
+  id: ID!
+  name: String!
+}
+
 type Query {
   countries: [Country]!
   country(id: ID!): Country!
+  regions: [Region]!
+  region(id: ID!): Region!
 }
