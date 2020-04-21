@@ -4,9 +4,9 @@ import { RegionModel } from '~/types/models';
 
 export type HygieneServiceConstructor = (
   options: ServicesOptions,
-) => CountryService;
+) => HygieneService;
 
-export interface CountryService {
+export interface HygieneService {
   getCountries: () => Promise<CountryModel[]>;
   getCountry: (id: string) => Promise<CountryModel>;
   getRegions: () => Promise<RegionModel[]>;

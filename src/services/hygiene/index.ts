@@ -6,56 +6,64 @@ const getCountries = (options: ServicesOptions) => async (): Promise<
   CountryModel[]
 > => {
   const { endpoint, fetch } = options;
-  const response = await fetch(`${endpoint}/countries`, {
-    headers: {
-      'x-api-version': '2',
-      'content-type': 'application/json',
+  const response = await fetch.get<{ countries: CountryModel[] }>(
+    `${endpoint}/countries`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
     },
-  });
-  const data = await response.json();
-  return data.countries;
+  );
+  return response.countries;
 };
 
 export const getCountry = (options: ServicesOptions) => async (
   id: string,
 ): Promise<CountryModel> => {
   const { endpoint, fetch } = options;
-  const response = await fetch(`${endpoint}/countries/${id}`, {
-    headers: {
-      'x-api-version': '2',
-      'content-type': 'application/json',
+  const response = await fetch.get<{ country: CountryModel }>(
+    `${endpoint}/countries/${id}`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
     },
-  });
-  const country = await response.json();
-  return country;
+  );
+  return response.country;
 };
 
 const getRegions = (options: ServicesOptions) => async (): Promise<
   RegionModel[]
 > => {
   const { endpoint, fetch } = options;
-  const response = await fetch(`${endpoint}/regions`, {
-    headers: {
-      'x-api-version': '2',
-      'content-type': 'application/json',
+  const response = await fetch.get<{ regions: RegionModel[] }>(
+    `${endpoint}/regions`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
     },
-  });
-  const data = await response.json();
-  return data.regions;
+  );
+  return response.regions;
 };
 
 export const getRegion = (options: ServicesOptions) => async (
   id: string,
 ): Promise<RegionModel> => {
   const { endpoint, fetch } = options;
-  const response = await fetch(`${endpoint}/regions/${id}`, {
-    headers: {
-      'x-api-version': '2',
-      'content-type': 'application/json',
+  const response = await fetch.get<{ region: RegionModel }>(
+    `${endpoint}/regions/${id}`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
     },
-  });
-  const region = await response.json();
-  return region;
+  );
+  return response.region;
 };
 
 export const hygieneService: HygieneServiceConstructor = (options) => ({

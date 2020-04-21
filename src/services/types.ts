@@ -1,8 +1,8 @@
-import fetch from "node-fetch";
 import { HygieneService } from "./hygiene/types";
+import { Fetch } from '~utils/fetch/types';
 
 export interface ServicesOptions {
-  fetch: typeof fetch;
+  fetch: Fetch;
   endpoint: string;
 }
 
