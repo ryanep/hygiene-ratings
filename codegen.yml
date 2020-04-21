@@ -15,7 +15,9 @@ generates:
       contextType: ../graphql/context/types#ApolloContext
       mappers:
         Authority: ../types/models#AuthorityModel
+        BusinessType: ../types/models#BusinessTypeModel
         Country: ../types/models#CountryModel
+        Establishment: ../types/models#EstablishmentModel
         Region: ../types/models#RegionModel
       namingConvention:
         enumValues: change-case#upperCase

@@ -1,25 +1,3 @@
-export interface CountryModel {
-  id: number;
-  name: string;
-  nameKey: string;
-  code: string;
-  links: {
-    rel: string;
-    href: string;
-  }[];
-}
-
-export interface RegionModel {
-  id: number;
-  name: string;
-  nameKey: string;
-  code: string;
-  links: {
-    rel: string;
-    href: string;
-  }[];
-}
-
 export interface AuthorityModel {
   LocalAuthorityId: number;
   LocalAuthorityIdCode: string;
@@ -35,6 +13,75 @@ export interface AuthorityModel {
   CreationDate: Date;
   LastPublishedDate: Date;
   SchemeType: number;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}
+
+export interface BusinessTypeModel {
+  BusinessTypeId: string;
+  BusinessTypeName: string;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}
+
+export interface CountryModel {
+  id: number;
+  name: string;
+  nameKey: string;
+  code: string;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}
+
+export interface EstablishmentModel {
+  FHRSID: number;
+  LocalAuthorityBusinessID: string;
+  BusinessName: string;
+  BusinessType: string;
+  BusinessTypeID: number;
+  AddressLine1: string;
+  AddressLine2: string;
+  AddressLine3: string;
+  AddressLine4: string;
+  PostCode: string;
+  Phone: string;
+  RatingValue: string;
+  RatingKey: string;
+  RatingDate: string;
+  LocalAuthorityCode: string;
+  LocalAuthorityName: string;
+  LocalAuthorityWebSite: string;
+  LocalAuthorityEmailAddress: string;
+  scores: {
+    Hygiene: number;
+    Structural: number;
+    ConfidenceInManagement: number;
+  };
+  SchemeType: string;
+  geocode: {
+    longitude: string;
+    latitude: string;
+  };
+  RightToReply: string;
+  Distance?: number;
+  NewRatingPending: boolean;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}
+
+export interface RegionModel {
+  id: number;
+  name: string;
+  nameKey: string;
+  code: string;
   links: {
     rel: string;
     href: string;

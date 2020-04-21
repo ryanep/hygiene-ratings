@@ -2,7 +2,13 @@
 /* @ts-nocheck */
 /* eslint-disable */
 import { GraphQLResolveInfo } from 'graphql';
-import { AuthorityModel, CountryModel, RegionModel } from '../types/models';
+import {
+  AuthorityModel,
+  BusinessTypeModel,
+  CountryModel,
+  EstablishmentModel,
+  RegionModel,
+} from '../types/models';
 import { ApolloContext } from '../graphql/context/types';
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = {
@@ -19,10 +25,46 @@ export type Scalars = {
   Float: number;
 };
 
+export type Authority = {
+  __typename?: 'Authority';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  email: Scalars['String'];
+};
+
+export type BusinessType = {
+  __typename?: 'BusinessType';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
 export type Country = {
   __typename?: 'Country';
   id: Scalars['ID'];
   name: Scalars['String'];
+};
+
+export type Establishment = {
+  __typename?: 'Establishment';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  type: Scalars['String'];
+  addressLineOne: Scalars['String'];
+  addressLineTwo: Maybe<Scalars['String']>;
+  addressLineThree: Maybe<Scalars['String']>;
+  addressLineFour: Maybe<Scalars['String']>;
+  postcode: Scalars['String'];
+  phoneNumber: Maybe<Scalars['String']>;
+  rating: Scalars['String'];
+  ratingDate: Scalars['String'];
+  geolocation: Geolocation;
+  newRatingPending: Scalars['Boolean'];
+};
+
+export type Geolocation = {
+  __typename?: 'Geolocation';
+  longitude: Scalars['String'];
+  latitude: Scalars['String'];
 };
 
 export type Region = {
@@ -31,31 +73,37 @@ export type Region = {
   name: Scalars['String'];
 };
 
-export type Authority = {
-  __typename?: 'Authority';
-  id: Scalars['ID'];
-  name: Scalars['String'];
-};
-
 export type Query = {
   __typename?: 'Query';
-  countries: Array<Maybe<Country>>;
-  country: Country;
-  regions: Array<Maybe<Region>>;
-  region: Region;
   authorities: Array<Maybe<Authority>>;
   authority: Authority;
+  businessTypes: Array<Maybe<BusinessType>>;
+  businessType: BusinessType;
+  countries: Array<Maybe<Country>>;
+  country: Country;
+  establishments: Array<Maybe<Establishment>>;
+  establishment: Establishment;
+  regions: Array<Maybe<Region>>;
+  region: Region;
+};
+
+export type QueryAuthorityArgs = {
+  id: Scalars['ID'];
+};
+
+export type QueryBusinessTypeArgs = {
+  id: Scalars['ID'];
 };
 
 export type QueryCountryArgs = {
   id: Scalars['ID'];
 };
 
-export type QueryRegionArgs = {
+export type QueryEstablishmentArgs = {
   id: Scalars['ID'];
 };
 
-export type QueryAuthorityArgs = {
+export type QueryRegionArgs = {
   id: Scalars['ID'];
 };
 
@@ -172,10 +220,13 @@ export type DirectiveResolverFn<
 export type ResolversTypes = ResolversObject<{
   String: ResolverTypeWrapper<Scalars['String']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  Country: ResolverTypeWrapper<CountryModel>;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
-  Region: ResolverTypeWrapper<RegionModel>;
   Authority: ResolverTypeWrapper<AuthorityModel>;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
+  BusinessType: ResolverTypeWrapper<BusinessTypeModel>;
+  Country: ResolverTypeWrapper<CountryModel>;
+  Establishment: ResolverTypeWrapper<EstablishmentModel>;
+  Geolocation: ResolverTypeWrapper<Geolocation>;
+  Region: ResolverTypeWrapper<RegionModel>;
   Query: ResolverTypeWrapper<{}>;
 }>;
 
@@ -183,11 +234,33 @@ export type ResolversTypes = ResolversObject<{
 export type ResolversParentTypes = ResolversObject<{
   String: Scalars['String'];
   Boolean: Scalars['Boolean'];
-  Country: CountryModel;
-  ID: Scalars['ID'];
-  Region: RegionModel;
   Authority: AuthorityModel;
+  ID: Scalars['ID'];
+  BusinessType: BusinessTypeModel;
+  Country: CountryModel;
+  Establishment: EstablishmentModel;
+  Geolocation: Geolocation;
+  Region: RegionModel;
   Query: {};
+}>;
+
+export type AuthorityResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['Authority'] = ResolversParentTypes['Authority']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  email: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
+export type BusinessTypeResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['BusinessType'] = ResolversParentTypes['BusinessType']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
 }>;
 
 export type CountryResolvers<
@@ -196,6 +269,55 @@ export type CountryResolvers<
 > = ResolversObject<{
   id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
+export type EstablishmentResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['Establishment'] = ResolversParentTypes['Establishment']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  type: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  addressLineOne: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  addressLineTwo: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
+  addressLineThree: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
+  addressLineFour: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
+  postcode: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  phoneNumber: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
+  rating: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  ratingDate: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  geolocation: Resolver<ResolversTypes['Geolocation'], ParentType, ContextType>;
+  newRatingPending: Resolver<
+    ResolversTypes['Boolean'],
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
+export type GeolocationResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['Geolocation'] = ResolversParentTypes['Geolocation']
+> = ResolversObject<{
+  longitude: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  latitude: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: isTypeOfResolverFn<ParentType>;
 }>;
 
@@ -208,19 +330,32 @@ export type RegionResolvers<
   __isTypeOf?: isTypeOfResolverFn<ParentType>;
 }>;
 
-export type AuthorityResolvers<
-  ContextType = ApolloContext,
-  ParentType extends ResolversParentTypes['Authority'] = ResolversParentTypes['Authority']
-> = ResolversObject<{
-  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: isTypeOfResolverFn<ParentType>;
-}>;
-
 export type QueryResolvers<
   ContextType = ApolloContext,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = ResolversObject<{
+  authorities: Resolver<
+    Array<Maybe<ResolversTypes['Authority']>>,
+    ParentType,
+    ContextType
+  >;
+  authority: Resolver<
+    ResolversTypes['Authority'],
+    ParentType,
+    ContextType,
+    RequireFields<QueryAuthorityArgs, 'id'>
+  >;
+  businessTypes: Resolver<
+    Array<Maybe<ResolversTypes['BusinessType']>>,
+    ParentType,
+    ContextType
+  >;
+  businessType: Resolver<
+    ResolversTypes['BusinessType'],
+    ParentType,
+    ContextType,
+    RequireFields<QueryBusinessTypeArgs, 'id'>
+  >;
   countries: Resolver<
     Array<Maybe<ResolversTypes['Country']>>,
     ParentType,
@@ -231,6 +366,17 @@ export type QueryResolvers<
     ParentType,
     ContextType,
     RequireFields<QueryCountryArgs, 'id'>
+  >;
+  establishments: Resolver<
+    Array<Maybe<ResolversTypes['Establishment']>>,
+    ParentType,
+    ContextType
+  >;
+  establishment: Resolver<
+    ResolversTypes['Establishment'],
+    ParentType,
+    ContextType,
+    RequireFields<QueryEstablishmentArgs, 'id'>
   >;
   regions: Resolver<
     Array<Maybe<ResolversTypes['Region']>>,
@@ -243,23 +389,15 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryRegionArgs, 'id'>
   >;
-  authorities: Resolver<
-    Array<Maybe<ResolversTypes['Authority']>>,
-    ParentType,
-    ContextType
-  >;
-  authority: Resolver<
-    ResolversTypes['Authority'],
-    ParentType,
-    ContextType,
-    RequireFields<QueryAuthorityArgs, 'id'>
-  >;
 }>;
 
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
-  Country: CountryResolvers<ContextType>;
-  Region: RegionResolvers<ContextType>;
   Authority: AuthorityResolvers<ContextType>;
+  BusinessType: BusinessTypeResolvers<ContextType>;
+  Country: CountryResolvers<ContextType>;
+  Establishment: EstablishmentResolvers<ContextType>;
+  Geolocation: GeolocationResolvers<ContextType>;
+  Region: RegionResolvers<ContextType>;
   Query: QueryResolvers<ContextType>;
 }>;
 

@@ -1,6 +1,38 @@
+type Authority {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type BusinessType {
+  id: ID!
+  name: String!
+}
+
 type Country {
   id: ID!
   name: String!
+}
+
+type Establishment {
+  id: ID!
+  name: String!
+  type: String!
+  addressLineOne: String!
+  addressLineTwo: String
+  addressLineThree: String
+  addressLineFour: String
+  postcode: String!
+  phoneNumber: String
+  rating: String!
+  ratingDate: String!
+  geolocation: Geolocation!
+  newRatingPending: Boolean!
+}
+
+type Geolocation {
+  longitude: String!
+  latitude: String!
 }
 
 type Region {
@@ -8,16 +40,15 @@ type Region {
   name: String!
 }
 
-type Authority {
-  id: ID!
-  name: String!
-}
-
 type Query {
-  countries: [Country]!
-  country(id: ID!): Country!
-  regions: [Region]!
-  region(id: ID!): Region!
   authorities: [Authority]!
   authority(id: ID!): Authority!
+  businessTypes: [BusinessType]!
+  businessType(id: ID!): BusinessType!
+  countries: [Country]!
+  country(id: ID!): Country!
+  establishments: [Establishment]!
+  establishment(id: ID!): Establishment!
+  regions: [Region]!
+  region(id: ID!): Region!
 }
