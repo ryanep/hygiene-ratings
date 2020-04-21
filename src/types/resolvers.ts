@@ -2,7 +2,7 @@
 /* @ts-nocheck */
 /* eslint-disable */
 import { GraphQLResolveInfo } from 'graphql';
-import { CountryModel, RegionModel } from '../types/models';
+import { AuthorityModel, CountryModel, RegionModel } from '../types/models';
 import { ApolloContext } from '../graphql/context/types';
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = {
@@ -31,12 +31,20 @@ export type Region = {
   name: Scalars['String'];
 };
 
+export type Authority = {
+  __typename?: 'Authority';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   countries: Array<Maybe<Country>>;
   country: Country;
   regions: Array<Maybe<Region>>;
   region: Region;
+  authorities: Array<Maybe<Authority>>;
+  authority: Authority;
 };
 
 export type QueryCountryArgs = {
@@ -44,6 +52,10 @@ export type QueryCountryArgs = {
 };
 
 export type QueryRegionArgs = {
+  id: Scalars['ID'];
+};
+
+export type QueryAuthorityArgs = {
   id: Scalars['ID'];
 };
 
@@ -163,6 +175,7 @@ export type ResolversTypes = ResolversObject<{
   Country: ResolverTypeWrapper<CountryModel>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Region: ResolverTypeWrapper<RegionModel>;
+  Authority: ResolverTypeWrapper<AuthorityModel>;
   Query: ResolverTypeWrapper<{}>;
 }>;
 
@@ -173,6 +186,7 @@ export type ResolversParentTypes = ResolversObject<{
   Country: CountryModel;
   ID: Scalars['ID'];
   Region: RegionModel;
+  Authority: AuthorityModel;
   Query: {};
 }>;
 
@@ -188,6 +202,15 @@ export type CountryResolvers<
 export type RegionResolvers<
   ContextType = ApolloContext,
   ParentType extends ResolversParentTypes['Region'] = ResolversParentTypes['Region']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
+export type AuthorityResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['Authority'] = ResolversParentTypes['Authority']
 > = ResolversObject<{
   id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -220,11 +243,23 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryRegionArgs, 'id'>
   >;
+  authorities: Resolver<
+    Array<Maybe<ResolversTypes['Authority']>>,
+    ParentType,
+    ContextType
+  >;
+  authority: Resolver<
+    ResolversTypes['Authority'],
+    ParentType,
+    ContextType,
+    RequireFields<QueryAuthorityArgs, 'id'>
+  >;
 }>;
 
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   Country: CountryResolvers<ContextType>;
   Region: RegionResolvers<ContextType>;
+  Authority: AuthorityResolvers<ContextType>;
   Query: QueryResolvers<ContextType>;
 }>;
 

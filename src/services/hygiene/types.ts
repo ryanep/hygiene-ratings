@@ -1,6 +1,5 @@
 import { ServicesOptions } from '~/services/types';
-import { CountryModel } from '~/types/models';
-import { RegionModel } from '~/types/models';
+import { AuthorityModel, CountryModel, RegionModel } from '~/types/models';
 
 export type HygieneServiceConstructor = (
   options: ServicesOptions,
@@ -11,4 +10,6 @@ export interface HygieneService {
   getCountry: (id: string) => Promise<CountryModel>;
   getRegions: () => Promise<RegionModel[]>;
   getRegion: (id: string) => Promise<RegionModel>;
+  getAuthorities: () => Promise<AuthorityModel[]>;
+  getAuthority: (id: string) => Promise<AuthorityModel>;
 }

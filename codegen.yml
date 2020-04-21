@@ -14,6 +14,7 @@ generates:
     config:
       contextType: ../graphql/context/types#ApolloContext
       mappers:
+        Authority: ../types/models#AuthorityModel
         Country: ../types/models#CountryModel
         Region: ../types/models#RegionModel
       namingConvention:

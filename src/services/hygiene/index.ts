@@ -1,5 +1,5 @@
 import { ServicesOptions } from '../types';
-import { CountryModel, RegionModel } from '~types/models';
+import { CountryModel, RegionModel, AuthorityModel } from '~types/models';
 import { HygieneServiceConstructor } from './types';
 
 const getCountries = (options: ServicesOptions) => async (): Promise<
@@ -22,7 +22,7 @@ export const getCountry = (options: ServicesOptions) => async (
   id: string,
 ): Promise<CountryModel> => {
   const { endpoint, fetch } = options;
-  const response = await fetch.get<{ country: CountryModel }>(
+  const response = await fetch.get<CountryModel>(
     `${endpoint}/countries/${id}`,
     {
       headers: {
@@ -31,7 +31,7 @@ export const getCountry = (options: ServicesOptions) => async (
       },
     },
   );
-  return response.country;
+  return response;
 };
 
 const getRegions = (options: ServicesOptions) => async (): Promise<
@@ -54,8 +54,19 @@ export const getRegion = (options: ServicesOptions) => async (
   id: string,
 ): Promise<RegionModel> => {
   const { endpoint, fetch } = options;
-  const response = await fetch.get<{ region: RegionModel }>(
-    `${endpoint}/regions/${id}`,
+  const response = await fetch.get<RegionModel>(`${endpoint}/regions/${id}`, {
+    headers: {
+      'x-api-version': '2',
+      'content-type': 'application/json',
+    },
+  });
+  return response;
+};
+
+export const getAuthorities = (options: ServicesOptions) => async () => {
+  const { endpoint, fetch } = options;
+  const response = await fetch.get<{ authorities: AuthorityModel[] }>(
+    `${endpoint}/authorities`,
     {
       headers: {
         'x-api-version': '2',
@@ -63,7 +74,23 @@ export const getRegion = (options: ServicesOptions) => async (
       },
     },
   );
-  return response.region;
+  return response.authorities;
+};
+
+export const getAuthority = (options: ServicesOptions) => async (
+  id: string,
+) => {
+  const { endpoint, fetch } = options;
+  const response = await fetch.get<AuthorityModel>(
+    `${endpoint}/authorities/${id}`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
+    },
+  );
+  return response;
 };
 
 export const hygieneService: HygieneServiceConstructor = (options) => ({
@@ -71,4 +98,6 @@ export const hygieneService: HygieneServiceConstructor = (options) => ({
   getCountry: getCountry(options),
   getRegions: getRegions(options),
   getRegion: getRegion(options),
+  getAuthorities: getAuthorities(options),
+  getAuthority: getAuthority(options),
 });

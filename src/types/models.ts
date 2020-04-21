@@ -19,3 +19,24 @@ export interface RegionModel {
     href: string;
   }[];
 }
+
+export interface AuthorityModel {
+  LocalAuthorityId: number;
+  LocalAuthorityIdCode: string;
+  Name: string;
+  FriendlyName: string;
+  Url: string;
+  SchemeUrl: string;
+  Email: string;
+  RegionName: string;
+  FileName: string;
+  FileNameWelsh: string;
+  EstablishmentCount: number;
+  CreationDate: Date;
+  LastPublishedDate: Date;
+  SchemeType: number;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}
