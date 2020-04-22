@@ -8,6 +8,7 @@ import {
   SchemeTypeModel,
   SortOptionModel,
   RatingModel,
+  RatingOperatorModel,
 } from '~/types/models';
 
 export type HygieneServiceConstructor = (
@@ -24,6 +25,7 @@ export interface HygieneService {
   getEstablishments: () => Promise<EstablishmentModel[]>;
   getEstablishment: (id: string) => Promise<EstablishmentModel>;
   getRatings: () => Promise<RatingModel[]>;
+  getRatingOperators: () => Promise<RatingOperatorModel[]>;
   getRegions: () => Promise<RegionModel[]>;
   getRegion: (id: string) => Promise<RegionModel>;
   getSchemeTypes: () => Promise<SchemeTypeModel[]>;

@@ -119,3 +119,13 @@ export interface RatingModel {
     href: string;
   }[];
 }
+
+export interface RatingOperatorModel {
+  ratingOperatorId: number;
+  ratingOperatorName: string;
+  ratingOperatorKey: string;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}

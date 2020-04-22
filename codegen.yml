@@ -19,6 +19,7 @@ generates:
         Country: ../types/models#CountryModel
         Establishment: ../types/models#EstablishmentModel
         Rating: ../types/models#RatingModel
+        RatingOperator: ../types/models#RatingOperatorModel
         Region: ../types/models#RegionModel
         SchemeType: ../types/models#SchemeTypeModel
         SortOption: ../types/models#SortOptionModel

@@ -8,6 +8,7 @@ import { country } from './country';
 import { establishments } from './establishments';
 import { establishment } from './establishment';
 import { ratings } from './ratings';
+import { ratingOperators } from './rating-operators';
 import { regions } from './regions';
 import { region } from './region';
 import { schemeTypes } from './scheme-types';
@@ -23,6 +24,7 @@ export const Query: QueryResolvers = {
   establishments,
   establishment,
   ratings,
+  ratingOperators,
   regions,
   region,
   schemeTypes,

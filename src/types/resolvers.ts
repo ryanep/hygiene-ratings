@@ -8,6 +8,7 @@ import {
   CountryModel,
   EstablishmentModel,
   RatingModel,
+  RatingOperatorModel,
   RegionModel,
   SchemeTypeModel,
   SortOptionModel,
@@ -77,6 +78,12 @@ export type Rating = {
   schemaType: SchemeType;
 };
 
+export type RatingOperator = {
+  __typename?: 'RatingOperator';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
 export type Region = {
   __typename?: 'Region';
   id: Scalars['ID'];
@@ -105,11 +112,12 @@ export type Query = {
   country: Country;
   establishments: Array<Maybe<Establishment>>;
   establishment: Establishment;
+  ratings: Array<Maybe<Rating>>;
+  ratingOperators: Array<Maybe<RatingOperator>>;
   regions: Array<Maybe<Region>>;
   region: Region;
   schemeTypes: Array<Maybe<SchemeType>>;
   sortOptions: Array<Maybe<SortOption>>;
-  ratings: Array<Maybe<Rating>>;
 };
 
 export type QueryAuthorityArgs = {
@@ -252,6 +260,7 @@ export type ResolversTypes = ResolversObject<{
   Establishment: ResolverTypeWrapper<EstablishmentModel>;
   Geolocation: ResolverTypeWrapper<Geolocation>;
   Rating: ResolverTypeWrapper<RatingModel>;
+  RatingOperator: ResolverTypeWrapper<RatingOperatorModel>;
   Region: ResolverTypeWrapper<RegionModel>;
   SchemeType: ResolverTypeWrapper<SchemeTypeModel>;
   SortOption: ResolverTypeWrapper<SortOptionModel>;
@@ -269,6 +278,7 @@ export type ResolversParentTypes = ResolversObject<{
   Establishment: EstablishmentModel;
   Geolocation: Geolocation;
   Rating: RatingModel;
+  RatingOperator: RatingOperatorModel;
   Region: RegionModel;
   SchemeType: SchemeTypeModel;
   SortOption: SortOptionModel;
@@ -362,6 +372,15 @@ export type RatingResolvers<
   __isTypeOf?: isTypeOfResolverFn<ParentType>;
 }>;
 
+export type RatingOperatorResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['RatingOperator'] = ResolversParentTypes['RatingOperator']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
 export type RegionResolvers<
   ContextType = ApolloContext,
   ParentType extends ResolversParentTypes['Region'] = ResolversParentTypes['Region']
@@ -437,6 +456,16 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryEstablishmentArgs, 'id'>
   >;
+  ratings: Resolver<
+    Array<Maybe<ResolversTypes['Rating']>>,
+    ParentType,
+    ContextType
+  >;
+  ratingOperators: Resolver<
+    Array<Maybe<ResolversTypes['RatingOperator']>>,
+    ParentType,
+    ContextType
+  >;
   regions: Resolver<
     Array<Maybe<ResolversTypes['Region']>>,
     ParentType,
@@ -458,11 +487,6 @@ export type QueryResolvers<
     ParentType,
     ContextType
   >;
-  ratings: Resolver<
-    Array<Maybe<ResolversTypes['Rating']>>,
-    ParentType,
-    ContextType
-  >;
 }>;
 
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
@@ -472,6 +496,7 @@ export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   Establishment: EstablishmentResolvers<ContextType>;
   Geolocation: GeolocationResolvers<ContextType>;
   Rating: RatingResolvers<ContextType>;
+  RatingOperator: RatingOperatorResolvers<ContextType>;
   Region: RegionResolvers<ContextType>;
   SchemeType: SchemeTypeResolvers<ContextType>;
   SortOption: SortOptionResolvers<ContextType>;

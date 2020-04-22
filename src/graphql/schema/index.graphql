@@ -41,6 +41,11 @@ type Rating {
   schemaType: SchemeType!
 }
 
+type RatingOperator {
+  id: ID!
+  name: String!
+}
+
 type Region {
   id: ID!
   name: String!
@@ -65,9 +70,10 @@ type Query {
   country(id: ID!): Country!
   establishments: [Establishment]!
   establishment(id: ID!): Establishment!
+  ratings: [Rating]!
+  ratingOperators: [RatingOperator]!
   regions: [Region]!
   region(id: ID!): Region!
   schemeTypes: [SchemeType]!
   sortOptions: [SortOption]!
-  ratings: [Rating]!
 }

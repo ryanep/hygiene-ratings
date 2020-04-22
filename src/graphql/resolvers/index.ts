@@ -5,6 +5,7 @@ import { Country } from './fields/country';
 import { Establishment } from './fields/establishment';
 import { Geolocation } from './fields/geolocation';
 import { Rating } from './fields/rating';
+import { RatingOperator } from './fields/rating-operator';
 import { Region } from './fields/region';
 import { SchemeType } from './fields/scheme-type';
 import { SortOption } from './fields/sort-option';
@@ -17,6 +18,7 @@ export const resolvers: Resolvers = {
   Establishment,
   Geolocation,
   Rating,
+  RatingOperator,
   Region,
   SchemeType,
   SortOption,

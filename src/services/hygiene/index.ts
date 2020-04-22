@@ -8,6 +8,7 @@ import {
   SchemeTypeModel,
   SortOptionModel,
   RatingModel,
+  RatingOperatorModel,
 } from '~types/models';
 import { HygieneServiceConstructor } from './types';
 
@@ -151,6 +152,22 @@ const getRatings = (options: ServicesOptions) => async (): Promise<
   return response.ratings;
 };
 
+const getRatingOperators = (options: ServicesOptions) => async (): Promise<
+  RatingOperatorModel[]
+> => {
+  const { endpoint, fetch } = options;
+  const response = await fetch.get<{ ratingOperator: RatingOperatorModel[] }>(
+    `${endpoint}/ratingOperators`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
+    },
+  );
+  return response.ratingOperator;
+};
+
 const getRegions = (options: ServicesOptions) => async (): Promise<
   RegionModel[]
 > => {
@@ -218,6 +235,7 @@ export const hygieneService: HygieneServiceConstructor = (options) => ({
   getEstablishments: getEstablishments(options),
   getEstablishment: getEstablishment(options),
   getRatings: getRatings(options),
+  getRatingOperators: getRatingOperators(options),
   getRegions: getRegions(options),
   getRegion: getRegion(options),
   getSchemeTypes: getSchemeTypes(options),
