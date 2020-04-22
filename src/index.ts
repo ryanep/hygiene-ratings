@@ -4,7 +4,7 @@ import { logger } from './utils/logger';
 import { createApolloServer } from '~apollo';
 
 const init = async () => {
-  await createApolloServer();
+  createApolloServer();
   const app = createApp();
 
   app.listen(3001, () => {

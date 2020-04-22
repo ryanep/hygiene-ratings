@@ -5,6 +5,7 @@ import {
   AuthorityModel,
   BusinessTypeModel,
   EstablishmentModel,
+  SchemeTypeModel,
 } from '~types/models';
 import { HygieneServiceConstructor } from './types';
 
@@ -161,6 +162,20 @@ export const getRegion = (options: ServicesOptions) => async (
   return response;
 };
 
+export const getSchemeTypes = (options: ServicesOptions) => async () => {
+  const { endpoint, fetch } = options;
+  const response = await fetch.get<{ schemeTypes: SchemeTypeModel[] }>(
+    `${endpoint}/schemeTypes`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
+    },
+  );
+  return response.schemeTypes;
+};
+
 export const hygieneService: HygieneServiceConstructor = (options) => ({
   getAuthorities: getAuthorities(options),
   getAuthority: getAuthority(options),
@@ -172,4 +187,5 @@ export const hygieneService: HygieneServiceConstructor = (options) => ({
   getEstablishment: getEstablishment(options),
   getRegions: getRegions(options),
   getRegion: getRegion(options),
+  getSchemeTypes: getSchemeTypes(options),
 });

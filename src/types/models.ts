@@ -87,3 +87,13 @@ export interface RegionModel {
     href: string;
   }[];
 }
+
+export interface SchemeTypeModel {
+  schemeTypeid: number;
+  schemeTypeName: string;
+  schemeTypeKey: string;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}

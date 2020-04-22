@@ -27,9 +27,9 @@ const formatError = (error: GraphQLError) => {
 
 let server: ApolloServer;
 
-export const createApolloServer = async () => {
+export const createApolloServer = () => {
   const schemaPath = path.join(__dirname, './graphql/schema/**/*.graphql');
-  const typeDefs = await importSchema(schemaPath);
+  const typeDefs = importSchema(schemaPath);
   server = new ApolloServer({
     typeDefs,
     resolvers,

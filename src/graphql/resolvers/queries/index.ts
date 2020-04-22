@@ -9,6 +9,7 @@ import { establishments } from './establishments';
 import { establishment } from './establishment';
 import { regions } from './regions';
 import { region } from './region';
+import { schemeTypes } from './scheme-types';
 
 export const Query: QueryResolvers = {
   authorities,
@@ -21,4 +22,5 @@ export const Query: QueryResolvers = {
   establishment,
   regions,
   region,
+  schemeTypes,
 };

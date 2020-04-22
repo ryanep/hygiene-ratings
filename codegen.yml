@@ -19,6 +19,7 @@ generates:
         Country: ../types/models#CountryModel
         Establishment: ../types/models#EstablishmentModel
         Region: ../types/models#RegionModel
+        SchemeType: ../types/models#SchemeTypeModel
       namingConvention:
         enumValues: change-case#upperCase
       showUnusedMappers: true

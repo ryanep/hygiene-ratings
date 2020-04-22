@@ -5,6 +5,7 @@ import { Country } from './fields/country';
 import { Establishment } from './fields/establishment';
 import { Geolocation } from './fields/geolocation';
 import { Region } from './fields/region';
+import { SchemeType } from './fields/scheme-type';
 import { Query } from './queries';
 
 export const resolvers: Resolvers = {
@@ -14,5 +15,6 @@ export const resolvers: Resolvers = {
   Establishment,
   Geolocation,
   Region,
+  SchemeType,
   Query,
 };

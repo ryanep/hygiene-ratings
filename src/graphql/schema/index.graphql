@@ -40,6 +40,11 @@ type Region {
   name: String!
 }
 
+type SchemeType {
+  id: ID!
+  name: String!
+}
+
 type Query {
   authorities: [Authority]!
   authority(id: ID!): Authority!
@@ -51,4 +56,5 @@ type Query {
   establishment(id: ID!): Establishment!
   regions: [Region]!
   region(id: ID!): Region!
+  schemeTypes: [SchemeType]!
 }

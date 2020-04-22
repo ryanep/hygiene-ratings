@@ -8,6 +8,7 @@ import {
   CountryModel,
   EstablishmentModel,
   RegionModel,
+  SchemeTypeModel,
 } from '../types/models';
 import { ApolloContext } from '../graphql/context/types';
 export type Maybe<T> = T | null;
@@ -73,6 +74,12 @@ export type Region = {
   name: Scalars['String'];
 };
 
+export type SchemeType = {
+  __typename?: 'SchemeType';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   authorities: Array<Maybe<Authority>>;
@@ -85,6 +92,7 @@ export type Query = {
   establishment: Establishment;
   regions: Array<Maybe<Region>>;
   region: Region;
+  schemeTypes: Array<Maybe<SchemeType>>;
 };
 
 export type QueryAuthorityArgs = {
@@ -227,6 +235,7 @@ export type ResolversTypes = ResolversObject<{
   Establishment: ResolverTypeWrapper<EstablishmentModel>;
   Geolocation: ResolverTypeWrapper<Geolocation>;
   Region: ResolverTypeWrapper<RegionModel>;
+  SchemeType: ResolverTypeWrapper<SchemeTypeModel>;
   Query: ResolverTypeWrapper<{}>;
 }>;
 
@@ -241,6 +250,7 @@ export type ResolversParentTypes = ResolversObject<{
   Establishment: EstablishmentModel;
   Geolocation: Geolocation;
   Region: RegionModel;
+  SchemeType: SchemeTypeModel;
   Query: {};
 }>;
 
@@ -330,6 +340,15 @@ export type RegionResolvers<
   __isTypeOf?: isTypeOfResolverFn<ParentType>;
 }>;
 
+export type SchemeTypeResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['SchemeType'] = ResolversParentTypes['SchemeType']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
 export type QueryResolvers<
   ContextType = ApolloContext,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
@@ -389,6 +408,11 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryRegionArgs, 'id'>
   >;
+  schemeTypes: Resolver<
+    Array<Maybe<ResolversTypes['SchemeType']>>,
+    ParentType,
+    ContextType
+  >;
 }>;
 
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
@@ -398,6 +422,7 @@ export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   Establishment: EstablishmentResolvers<ContextType>;
   Geolocation: GeolocationResolvers<ContextType>;
   Region: RegionResolvers<ContextType>;
+  SchemeType: SchemeTypeResolvers<ContextType>;
   Query: QueryResolvers<ContextType>;
 }>;
 
