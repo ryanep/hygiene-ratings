@@ -132,6 +132,23 @@ export type QueryCountryArgs = {
   id: Scalars['ID'];
 };
 
+export type QueryEstablishmentsArgs = {
+  name: Maybe<Scalars['String']>;
+  address: Maybe<Scalars['String']>;
+  longitude: Maybe<Scalars['String']>;
+  latitude: Maybe<Scalars['String']>;
+  maxDistanceLimit: Maybe<Scalars['String']>;
+  businessTypeId: Maybe<Scalars['String']>;
+  schemeTypeKey: Maybe<Scalars['String']>;
+  ratingKey: Maybe<Scalars['String']>;
+  ratingOperatorKey: Maybe<Scalars['String']>;
+  localAuthorityId: Maybe<Scalars['String']>;
+  countryId: Maybe<Scalars['String']>;
+  sortOptionKey: Maybe<Scalars['String']>;
+  pageNumber: Maybe<Scalars['String']>;
+  pageSize: Maybe<Scalars['String']>;
+};
+
 export type QueryEstablishmentArgs = {
   id: Scalars['ID'];
 };
@@ -448,7 +465,8 @@ export type QueryResolvers<
   establishments: Resolver<
     Array<Maybe<ResolversTypes['Establishment']>>,
     ParentType,
-    ContextType
+    ContextType,
+    RequireFields<QueryEstablishmentsArgs, never>
   >;
   establishment: Resolver<
     ResolversTypes['Establishment'],

@@ -68,7 +68,22 @@ type Query {
   businessType(id: ID!): BusinessType!
   countries: [Country]!
   country(id: ID!): Country!
-  establishments: [Establishment]!
+  establishments(
+    name: String
+    address: String
+    longitude: String
+    latitude: String
+    maxDistanceLimit: String
+    businessTypeId: String
+    schemeTypeKey: String
+    ratingKey: String
+    ratingOperatorKey: String
+    localAuthorityId: String
+    countryId: String
+    sortOptionKey: String
+    pageNumber: String
+    pageSize: String
+  ): [Establishment]!
   establishment(id: ID!): Establishment!
   ratings: [Rating]!
   ratingOperators: [RatingOperator]!

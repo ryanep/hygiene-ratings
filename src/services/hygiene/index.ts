@@ -1,4 +1,4 @@
-import { ServicesOptions } from '../types';
+import querystring from 'query-string';
 import {
   CountryModel,
   RegionModel,
@@ -10,7 +10,8 @@ import {
   RatingModel,
   RatingOperatorModel,
 } from '~types/models';
-import { HygieneServiceConstructor } from './types';
+import { ServicesOptions } from '../types';
+import { HygieneServiceConstructor, EstablishmentFilterOptions } from './types';
 
 export const getAuthorities = (options: ServicesOptions) => async () => {
   const { endpoint, fetch } = options;
@@ -104,12 +105,13 @@ export const getCountry = (options: ServicesOptions) => async (
   return response;
 };
 
-const getEstablishments = (options: ServicesOptions) => async (): Promise<
-  EstablishmentModel[]
-> => {
+const getEstablishments = (options: ServicesOptions) => async (
+  filters: EstablishmentFilterOptions,
+): Promise<EstablishmentModel[]> => {
   const { endpoint, fetch } = options;
+  const query = querystring.stringify(filters);
   const response = await fetch.get<{ establishments: EstablishmentModel[] }>(
-    `${endpoint}/establishments`,
+    `${endpoint}/establishments?${query}`,
     {
       headers: {
         'x-api-version': '2',

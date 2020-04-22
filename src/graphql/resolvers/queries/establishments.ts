@@ -5,5 +5,10 @@ export const establishments: QueryResolvers['establishments'] = async (
   args,
   context,
 ) => {
-  return context.services.hygiene.getEstablishments();
+  try {
+    const establishments = await context.services.hygiene.getEstablishments(args);
+    return establishments;
+  } catch (error) {
+    return [];
+  }
 };

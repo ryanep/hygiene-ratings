@@ -41,7 +41,6 @@ export interface CountryModel {
 
 export interface EstablishmentModel {
   FHRSID: number;
-  LocalAuthorityBusinessID: string;
   BusinessName: string;
   BusinessType: string;
   BusinessTypeID: number;
@@ -54,6 +53,7 @@ export interface EstablishmentModel {
   RatingValue: string;
   RatingKey: string;
   RatingDate: string;
+  LocalAuthorityBusinessID: string;
   LocalAuthorityCode: string;
   LocalAuthorityName: string;
   LocalAuthorityWebSite: string;
