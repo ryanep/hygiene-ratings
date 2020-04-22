@@ -7,8 +7,10 @@ import {
   BusinessTypeModel,
   CountryModel,
   EstablishmentModel,
+  RatingModel,
   RegionModel,
   SchemeTypeModel,
+  SortOptionModel,
 } from '../types/models';
 import { ApolloContext } from '../graphql/context/types';
 export type Maybe<T> = T | null;
@@ -68,6 +70,13 @@ export type Geolocation = {
   latitude: Scalars['String'];
 };
 
+export type Rating = {
+  __typename?: 'Rating';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  schemaType: SchemeType;
+};
+
 export type Region = {
   __typename?: 'Region';
   id: Scalars['ID'];
@@ -76,6 +85,12 @@ export type Region = {
 
 export type SchemeType = {
   __typename?: 'SchemeType';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
+export type SortOption = {
+  __typename?: 'SortOption';
   id: Scalars['ID'];
   name: Scalars['String'];
 };
@@ -93,6 +108,8 @@ export type Query = {
   regions: Array<Maybe<Region>>;
   region: Region;
   schemeTypes: Array<Maybe<SchemeType>>;
+  sortOptions: Array<Maybe<SortOption>>;
+  ratings: Array<Maybe<Rating>>;
 };
 
 export type QueryAuthorityArgs = {
@@ -234,8 +251,10 @@ export type ResolversTypes = ResolversObject<{
   Country: ResolverTypeWrapper<CountryModel>;
   Establishment: ResolverTypeWrapper<EstablishmentModel>;
   Geolocation: ResolverTypeWrapper<Geolocation>;
+  Rating: ResolverTypeWrapper<RatingModel>;
   Region: ResolverTypeWrapper<RegionModel>;
   SchemeType: ResolverTypeWrapper<SchemeTypeModel>;
+  SortOption: ResolverTypeWrapper<SortOptionModel>;
   Query: ResolverTypeWrapper<{}>;
 }>;
 
@@ -249,8 +268,10 @@ export type ResolversParentTypes = ResolversObject<{
   Country: CountryModel;
   Establishment: EstablishmentModel;
   Geolocation: Geolocation;
+  Rating: RatingModel;
   Region: RegionModel;
   SchemeType: SchemeTypeModel;
+  SortOption: SortOptionModel;
   Query: {};
 }>;
 
@@ -331,6 +352,16 @@ export type GeolocationResolvers<
   __isTypeOf?: isTypeOfResolverFn<ParentType>;
 }>;
 
+export type RatingResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['Rating'] = ResolversParentTypes['Rating']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  schemaType: Resolver<ResolversTypes['SchemeType'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
 export type RegionResolvers<
   ContextType = ApolloContext,
   ParentType extends ResolversParentTypes['Region'] = ResolversParentTypes['Region']
@@ -343,6 +374,15 @@ export type RegionResolvers<
 export type SchemeTypeResolvers<
   ContextType = ApolloContext,
   ParentType extends ResolversParentTypes['SchemeType'] = ResolversParentTypes['SchemeType']
+> = ResolversObject<{
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
+}>;
+
+export type SortOptionResolvers<
+  ContextType = ApolloContext,
+  ParentType extends ResolversParentTypes['SortOption'] = ResolversParentTypes['SortOption']
 > = ResolversObject<{
   id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -413,6 +453,16 @@ export type QueryResolvers<
     ParentType,
     ContextType
   >;
+  sortOptions: Resolver<
+    Array<Maybe<ResolversTypes['SortOption']>>,
+    ParentType,
+    ContextType
+  >;
+  ratings: Resolver<
+    Array<Maybe<ResolversTypes['Rating']>>,
+    ParentType,
+    ContextType
+  >;
 }>;
 
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
@@ -421,8 +471,10 @@ export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   Country: CountryResolvers<ContextType>;
   Establishment: EstablishmentResolvers<ContextType>;
   Geolocation: GeolocationResolvers<ContextType>;
+  Rating: RatingResolvers<ContextType>;
   Region: RegionResolvers<ContextType>;
   SchemeType: SchemeTypeResolvers<ContextType>;
+  SortOption: SortOptionResolvers<ContextType>;
   Query: QueryResolvers<ContextType>;
 }>;
 

@@ -18,8 +18,10 @@ generates:
         BusinessType: ../types/models#BusinessTypeModel
         Country: ../types/models#CountryModel
         Establishment: ../types/models#EstablishmentModel
+        Rating: ../types/models#RatingModel
         Region: ../types/models#RegionModel
         SchemeType: ../types/models#SchemeTypeModel
+        SortOption: ../types/models#SortOptionModel
       namingConvention:
         enumValues: change-case#upperCase
       showUnusedMappers: true

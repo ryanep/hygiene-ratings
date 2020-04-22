@@ -35,12 +35,23 @@ type Geolocation {
   latitude: String!
 }
 
+type Rating {
+  id: ID!
+  name: String!
+  schemaType: SchemeType!
+}
+
 type Region {
   id: ID!
   name: String!
 }
 
 type SchemeType {
+  id: ID!
+  name: String!
+}
+
+type SortOption {
   id: ID!
   name: String!
 }
@@ -57,4 +68,6 @@ type Query {
   regions: [Region]!
   region(id: ID!): Region!
   schemeTypes: [SchemeType]!
+  sortOptions: [SortOption]!
+  ratings: [Rating]!
 }

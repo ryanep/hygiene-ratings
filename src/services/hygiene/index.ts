@@ -6,6 +6,8 @@ import {
   BusinessTypeModel,
   EstablishmentModel,
   SchemeTypeModel,
+  SortOptionModel,
+  RatingModel,
 } from '~types/models';
 import { HygieneServiceConstructor } from './types';
 
@@ -133,6 +135,22 @@ const getEstablishment = (options: ServicesOptions) => async (
   return response;
 };
 
+const getRatings = (options: ServicesOptions) => async (): Promise<
+  RatingModel[]
+> => {
+  const { endpoint, fetch } = options;
+  const response = await fetch.get<{ ratings: RatingModel[] }>(
+    `${endpoint}/ratings`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
+    },
+  );
+  return response.ratings;
+};
+
 const getRegions = (options: ServicesOptions) => async (): Promise<
   RegionModel[]
 > => {
@@ -176,6 +194,20 @@ export const getSchemeTypes = (options: ServicesOptions) => async () => {
   return response.schemeTypes;
 };
 
+export const getSortOptions = (options: ServicesOptions) => async () => {
+  const { endpoint, fetch } = options;
+  const response = await fetch.get<{ sortOptions: SortOptionModel[] }>(
+    `${endpoint}/sortOptions`,
+    {
+      headers: {
+        'x-api-version': '2',
+        'content-type': 'application/json',
+      },
+    },
+  );
+  return response.sortOptions;
+};
+
 export const hygieneService: HygieneServiceConstructor = (options) => ({
   getAuthorities: getAuthorities(options),
   getAuthority: getAuthority(options),
@@ -185,7 +217,9 @@ export const hygieneService: HygieneServiceConstructor = (options) => ({
   getCountry: getCountry(options),
   getEstablishments: getEstablishments(options),
   getEstablishment: getEstablishment(options),
+  getRatings: getRatings(options),
   getRegions: getRegions(options),
   getRegion: getRegion(options),
   getSchemeTypes: getSchemeTypes(options),
+  getSortOptions: getSortOptions(options),
 });

@@ -7,9 +7,11 @@ import { countries } from './countries';
 import { country } from './country';
 import { establishments } from './establishments';
 import { establishment } from './establishment';
+import { ratings } from './ratings';
 import { regions } from './regions';
 import { region } from './region';
 import { schemeTypes } from './scheme-types';
+import { sortOptions } from './sort-options';
 
 export const Query: QueryResolvers = {
   authorities,
@@ -20,7 +22,9 @@ export const Query: QueryResolvers = {
   country,
   establishments,
   establishment,
+  ratings,
   regions,
   region,
   schemeTypes,
+  sortOptions,
 };

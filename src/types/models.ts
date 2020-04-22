@@ -97,3 +97,25 @@ export interface SchemeTypeModel {
     href: string;
   }[];
 }
+
+export interface SortOptionModel {
+  sortOptionId: number;
+  sortOptionName: string;
+  sortOptionKey: string;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}
+
+export interface RatingModel {
+  ratingId: number;
+  ratingName: string;
+  ratingKey: string;
+  ratingKeyName: string;
+  schemeTypeId: number;
+  links: {
+    rel: string;
+    href: string;
+  }[];
+}

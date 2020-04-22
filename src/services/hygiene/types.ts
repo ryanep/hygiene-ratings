@@ -6,6 +6,8 @@ import {
   BusinessTypeModel,
   EstablishmentModel,
   SchemeTypeModel,
+  SortOptionModel,
+  RatingModel,
 } from '~/types/models';
 
 export type HygieneServiceConstructor = (
@@ -21,7 +23,9 @@ export interface HygieneService {
   getCountry: (id: string) => Promise<CountryModel>;
   getEstablishments: () => Promise<EstablishmentModel[]>;
   getEstablishment: (id: string) => Promise<EstablishmentModel>;
+  getRatings: () => Promise<RatingModel[]>;
   getRegions: () => Promise<RegionModel[]>;
   getRegion: (id: string) => Promise<RegionModel>;
-  getSchemeTypes: () => Promise<SchemeTypeModel[]>
+  getSchemeTypes: () => Promise<SchemeTypeModel[]>;
+  getSortOptions: () => Promise<SortOptionModel[]>;
 }

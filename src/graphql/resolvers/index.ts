@@ -4,8 +4,10 @@ import { BusinessType } from './fields/business-type';
 import { Country } from './fields/country';
 import { Establishment } from './fields/establishment';
 import { Geolocation } from './fields/geolocation';
+import { Rating } from './fields/rating';
 import { Region } from './fields/region';
 import { SchemeType } from './fields/scheme-type';
+import { SortOption } from './fields/sort-option';
 import { Query } from './queries';
 
 export const resolvers: Resolvers = {
@@ -14,7 +16,9 @@ export const resolvers: Resolvers = {
   Country,
   Establishment,
   Geolocation,
+  Rating,
   Region,
   SchemeType,
+  SortOption,
   Query,
 };
