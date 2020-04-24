@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "ttsc",
+    "test": "jest",
     "fmt": "prettier --write './src/**/*.{ts,tsx}'",
     "codegen": "graphql-codegen --config codegen.yml"
   },
@@ -35,7 +36,7 @@
     "@types/node-fetch": "^2.5.6",
     "@types/winston": "^2.4.4",
     "cross-env": "^7.0.2",
-    "jest": "^25.3.0",
+    "jest": "^25.4.0",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.4",
     "ts-jest": "^25.4.0",
