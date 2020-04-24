@@ -1,15 +1,10 @@
 import './env';
 import { createApp } from './app';
 import { logger } from './utils/logger';
-import { createApolloServer } from '~apollo';
+import { config } from './config';
 
-const init = async () => {
-  createApolloServer();
-  const app = createApp();
+const app = createApp();
 
-  app.listen(3001, () => {
-    logger.info(`Server listening on port ${3001}`);
-  });
-};
-
-init();
+app.listen(config.app.APP_PORT, () => {
+  logger.info(`Server listening on port ${config.app.APP_PORT}`);
+});

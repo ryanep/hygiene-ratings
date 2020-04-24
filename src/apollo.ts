@@ -6,6 +6,9 @@ import { logger } from '~/utils/logger';
 import { resolvers } from './graphql/resolvers';
 import { context } from './graphql/context';
 
+const schemaPath = path.join(__dirname, './graphql/schema/**/*.graphql');
+const typeDefs = importSchema(schemaPath);
+
 const formatError = (error: GraphQLError) => {
   logger.error(error);
   const { name, message, stack } = error;
@@ -25,20 +28,10 @@ const formatError = (error: GraphQLError) => {
   };
 };
 
-let server: ApolloServer;
-
-export const createApolloServer = () => {
-  const schemaPath = path.join(__dirname, './graphql/schema/**/*.graphql');
-  const typeDefs = importSchema(schemaPath);
-  server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context,
-    formatError,
-    uploads: false,
-  });
-};
-
-export const getApolloServer = () => {
-  return server;
-};
+export const apollo = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context,
+  formatError,
+  uploads: false,
+});
