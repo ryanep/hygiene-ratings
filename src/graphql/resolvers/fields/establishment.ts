@@ -9,12 +9,17 @@ export const Establishment: EstablishmentResolvers = {
   addressLineThree: (root) => (!!root.AddressLine3 ? root.AddressLine3 : null),
   addressLineFour: (root) => (!!root.AddressLine4 ? root.AddressLine4 : null),
   postcode: (root) => root.PostCode,
-  phoneNumber: (root) => !!root.Phone ? root.Phone : null,
+  phoneNumber: (root) => (!!root.Phone ? root.Phone : null),
   rating: (root) => root.RatingValue,
   ratingDate: (root) => root.RatingDate,
-  geolocation: (root) => ({
-    longitude: root.geocode.longitude,
-    latitude: root.geocode.latitude,
-  }),
+  geolocation: (root) => {
+    const { latitude, longitude } = root.geocode;
+    return latitude && longitude
+      ? {
+          longitude,
+          latitude,
+        }
+      : null;
+  },
   newRatingPending: (root) => root.NewRatingPending,
 };

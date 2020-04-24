@@ -61,7 +61,7 @@ export type Establishment = {
   phoneNumber: Maybe<Scalars['String']>;
   rating: Scalars['String'];
   ratingDate: Scalars['String'];
-  geolocation: Geolocation;
+  geolocation: Maybe<Geolocation>;
   newRatingPending: Scalars['Boolean'];
 };
 
@@ -361,7 +361,11 @@ export type EstablishmentResolvers<
   >;
   rating: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   ratingDate: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  geolocation: Resolver<ResolversTypes['Geolocation'], ParentType, ContextType>;
+  geolocation: Resolver<
+    Maybe<ResolversTypes['Geolocation']>,
+    ParentType,
+    ContextType
+  >;
   newRatingPending: Resolver<
     ResolversTypes['Boolean'],
     ParentType,
