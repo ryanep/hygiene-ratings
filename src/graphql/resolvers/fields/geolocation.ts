@@ -1,4 +1,4 @@
-import { GeolocationResolvers } from '~/types/resolvers';
+import { GeolocationResolvers } from '#/types/resolvers';
 
 export const Geolocation: GeolocationResolvers = {
   longitude: (root) => root.longitude,

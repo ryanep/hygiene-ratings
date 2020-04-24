@@ -1,6 +1,6 @@
-import { fetch } from '~utils/fetch';
-import { hygieneService } from '~/services/hygiene';
-import { config } from '~/config';
+import { fetch } from '#/utils/fetch';
+import { hygieneService } from '#/services/hygiene';
+import { config } from '#/config';
 import { ApolloContext } from './types';
 
 export const context = (): ApolloContext => {

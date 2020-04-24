@@ -1,4 +1,4 @@
-import { RegionResolvers } from '~/types/resolvers';
+import { RegionResolvers } from '#/types/resolvers';
 
 export const Region: RegionResolvers = {
   id: (root) => root.id.toString(),

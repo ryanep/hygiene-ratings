@@ -9,7 +9,7 @@ import {
   SortOptionModel,
   RatingModel,
   RatingOperatorModel,
-} from '~types/models';
+} from '#/types/models';
 import { ServicesOptions } from '../types';
 import { HygieneServiceConstructor, EstablishmentFilterOptions } from './types';
 

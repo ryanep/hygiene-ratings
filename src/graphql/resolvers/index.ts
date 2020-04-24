@@ -1,4 +1,4 @@
-import { Resolvers } from '~types/resolvers';
+import { Resolvers } from '#/types/resolvers';
 import { Authority } from './fields/authority';
 import { BusinessType } from './fields/business-type';
 import { Country } from './fields/country';

@@ -2,7 +2,7 @@ import path from 'path';
 import { ApolloServer } from 'apollo-server-express';
 import { GraphQLError } from 'graphql';
 import { importSchema } from 'graphql-import';
-import { logger } from '~/utils/logger';
+import { logger } from '#/utils/logger';
 import { resolvers } from './graphql/resolvers';
 import { context } from './graphql/context';
 

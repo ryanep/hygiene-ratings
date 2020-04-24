@@ -1,4 +1,4 @@
-import { Services } from "~/services/types";
+import { Services } from "#/services/types";
 
 export interface ApolloContext {
   services: Services;

@@ -1,4 +1,4 @@
-import { QueryResolvers } from '~types/resolvers';
+import { QueryResolvers } from '#/types/resolvers';
 
 export const countries: QueryResolvers['countries'] = async (
   root,

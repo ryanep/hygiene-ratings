@@ -1,4 +1,4 @@
-import { ServicesOptions } from '~/services/types';
+import { ServicesOptions } from '#/services/types';
 import {
   AuthorityModel,
   CountryModel,
@@ -9,7 +9,7 @@ import {
   SortOptionModel,
   RatingModel,
   RatingOperatorModel,
-} from '~/types/models';
+} from '#/types/models';
 
 export type HygieneServiceConstructor = (
   options: ServicesOptions,
@@ -22,7 +22,9 @@ export interface HygieneService {
   getBusinessType: (id: string) => Promise<BusinessTypeModel>;
   getCountries: () => Promise<CountryModel[]>;
   getCountry: (id: string) => Promise<CountryModel>;
-  getEstablishments: (filters: EstablishmentFilterOptions) => Promise<EstablishmentModel[]>;
+  getEstablishments: (
+    filters: EstablishmentFilterOptions,
+  ) => Promise<EstablishmentModel[]>;
   getEstablishment: (id: string) => Promise<EstablishmentModel>;
   getRatings: () => Promise<RatingModel[]>;
   getRatingOperators: () => Promise<RatingOperatorModel[]>;

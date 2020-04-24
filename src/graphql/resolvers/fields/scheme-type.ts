@@ -1,4 +1,4 @@
-import { SchemeTypeResolvers } from '~/types/resolvers';
+import { SchemeTypeResolvers } from '#/types/resolvers';
 
 export const SchemeType: SchemeTypeResolvers = {
   id: (root) => root.schemeTypeid.toString(),

@@ -1,4 +1,4 @@
-import { QueryResolvers } from '~types/resolvers';
+import { QueryResolvers } from '#/types/resolvers';
 import { authorities } from './authorities';
 import { authority } from './authority';
 import { businessTypes } from './business-types';

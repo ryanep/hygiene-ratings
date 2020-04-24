@@ -1,5 +1,5 @@
+import { Fetch } from '#/utils/fetch/types';
 import { HygieneService } from "./hygiene/types";
-import { Fetch } from '~utils/fetch/types';
 
 export interface ServicesOptions {
   fetch: Fetch;

@@ -1,4 +1,4 @@
-import { SortOptionResolvers } from '~/types/resolvers';
+import { SortOptionResolvers } from '#/types/resolvers';
 
 export const SortOption: SortOptionResolvers = {
   id: (root) => root.sortOptionId.toString(),

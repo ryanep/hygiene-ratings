@@ -1,4 +1,4 @@
-import { EstablishmentResolvers } from '~/types/resolvers';
+import { EstablishmentResolvers } from '#/types/resolvers';
 
 export const Establishment: EstablishmentResolvers = {
   id: (root) => root.FHRSID.toString(),

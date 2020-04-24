@@ -1,4 +1,4 @@
-import { RatingResolvers } from '~/types/resolvers';
+import { RatingResolvers } from '#/types/resolvers';
 
 export const Rating: RatingResolvers = {
   id: (root) => root.ratingId.toString(),
