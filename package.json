@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
-    "build": "ttsc",
+    "build": "ttsc && rsync -am --include='*.graphql' --include='*/' --exclude='*' './src/graphql' './dist'",
     "test": "jest",
     "fmt": "prettier --write './src/**/*.{ts,tsx}'",
     "codegen": "graphql-codegen --config codegen.yml"

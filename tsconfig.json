@@ -6,7 +6,7 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "resolveJsonModule": true,
     "lib": ["es6", "esnext.asynciterable"],
     "outDir": "./dist",
