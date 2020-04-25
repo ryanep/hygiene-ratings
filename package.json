@@ -8,8 +8,8 @@
     "dev": "nodemon",
     "build": "ttsc && rsync -am --include='*.graphql' --include='*/' --exclude='*' './src/graphql' './dist'",
     "test": "jest",
-    "lint": "eslint './src/**/*.{ts,tsx}'",
-    "fmt": "prettier --write './src/**/*.{ts,tsx}'",
+    "lint": "eslint './src/**/*.ts'",
+    "fmt": "prettier --write './src/**/*.ts'",
     "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
@@ -46,8 +46,9 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "husky": "^4.2.5",
     "jest": "^25.4.0",
+    "lint-staged": "^10.1.7",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.4",
     "supertest": "^4.0.2",
