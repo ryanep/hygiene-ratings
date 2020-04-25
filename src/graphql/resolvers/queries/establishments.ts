@@ -6,8 +6,7 @@ export const establishments: QueryResolvers['establishments'] = async (
   context,
 ) => {
   try {
-    const establishments = await context.services.hygiene.getEstablishments(args);
-    return establishments;
+    return await context.services.hygiene.getEstablishments(args);
   } catch (error) {
     return [];
   }

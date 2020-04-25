@@ -1,4 +1,4 @@
-import { ServicesOptions } from '#/services/types';
+import { Fetch } from '#/utils/fetch/types';
 import {
   AuthorityModel,
   CountryModel,
@@ -11,8 +11,13 @@ import {
   RatingOperatorModel,
 } from '#/types/models';
 
+export interface HygieneServicesOptions {
+  fetch: Fetch;
+  endpoint: string;
+}
+
 export type HygieneServiceConstructor = (
-  options: ServicesOptions,
+  options: HygieneServicesOptions,
 ) => HygieneService;
 
 export interface HygieneService {

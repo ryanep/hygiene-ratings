@@ -10,10 +10,13 @@ import {
   RatingModel,
   RatingOperatorModel,
 } from '#/types/models';
-import { ServicesOptions } from '../types';
-import { HygieneServiceConstructor, EstablishmentFilterOptions } from './types';
+import {
+  HygieneServicesOptions,
+  HygieneServiceConstructor,
+  EstablishmentFilterOptions,
+} from './types';
 
-export const getAuthorities = (options: ServicesOptions) => async () => {
+export const getAuthorities = (options: HygieneServicesOptions) => async () => {
   const { endpoint, fetch } = options;
   const response = await fetch.get<{ authorities: AuthorityModel[] }>(
     `${endpoint}/authorities`,
@@ -27,7 +30,7 @@ export const getAuthorities = (options: ServicesOptions) => async () => {
   return response.authorities;
 };
 
-export const getAuthority = (options: ServicesOptions) => async (
+export const getAuthority = (options: HygieneServicesOptions) => async (
   id: string,
 ) => {
   const { endpoint, fetch } = options;
@@ -43,7 +46,9 @@ export const getAuthority = (options: ServicesOptions) => async (
   return response;
 };
 
-export const getBusinessTypes = (options: ServicesOptions) => async () => {
+export const getBusinessTypes = (
+  options: HygieneServicesOptions,
+) => async () => {
   const { endpoint, fetch } = options;
   const response = await fetch.get<{ businessTypes: BusinessTypeModel[] }>(
     `${endpoint}/businessTypes`,
@@ -57,7 +62,7 @@ export const getBusinessTypes = (options: ServicesOptions) => async () => {
   return response.businessTypes;
 };
 
-export const getBusinessType = (options: ServicesOptions) => async (
+export const getBusinessType = (options: HygieneServicesOptions) => async (
   id: string,
 ) => {
   const { endpoint, fetch } = options;
@@ -73,7 +78,7 @@ export const getBusinessType = (options: ServicesOptions) => async (
   return response;
 };
 
-const getCountries = (options: ServicesOptions) => async (): Promise<
+const getCountries = (options: HygieneServicesOptions) => async (): Promise<
   CountryModel[]
 > => {
   const { endpoint, fetch } = options;
@@ -89,7 +94,7 @@ const getCountries = (options: ServicesOptions) => async (): Promise<
   return response.countries;
 };
 
-export const getCountry = (options: ServicesOptions) => async (
+export const getCountry = (options: HygieneServicesOptions) => async (
   id: string,
 ): Promise<CountryModel> => {
   const { endpoint, fetch } = options;
@@ -105,7 +110,7 @@ export const getCountry = (options: ServicesOptions) => async (
   return response;
 };
 
-const getEstablishments = (options: ServicesOptions) => async (
+const getEstablishments = (options: HygieneServicesOptions) => async (
   filters: EstablishmentFilterOptions,
 ): Promise<EstablishmentModel[]> => {
   const { endpoint, fetch } = options;
@@ -122,7 +127,7 @@ const getEstablishments = (options: ServicesOptions) => async (
   return response.establishments;
 };
 
-const getEstablishment = (options: ServicesOptions) => async (
+const getEstablishment = (options: HygieneServicesOptions) => async (
   id: string,
 ): Promise<EstablishmentModel> => {
   const { endpoint, fetch } = options;
@@ -138,7 +143,7 @@ const getEstablishment = (options: ServicesOptions) => async (
   return response;
 };
 
-const getRatings = (options: ServicesOptions) => async (): Promise<
+const getRatings = (options: HygieneServicesOptions) => async (): Promise<
   RatingModel[]
 > => {
   const { endpoint, fetch } = options;
@@ -154,9 +159,9 @@ const getRatings = (options: ServicesOptions) => async (): Promise<
   return response.ratings;
 };
 
-const getRatingOperators = (options: ServicesOptions) => async (): Promise<
-  RatingOperatorModel[]
-> => {
+const getRatingOperators = (
+  options: HygieneServicesOptions,
+) => async (): Promise<RatingOperatorModel[]> => {
   const { endpoint, fetch } = options;
   const response = await fetch.get<{ ratingOperator: RatingOperatorModel[] }>(
     `${endpoint}/ratingOperators`,
@@ -170,7 +175,7 @@ const getRatingOperators = (options: ServicesOptions) => async (): Promise<
   return response.ratingOperator;
 };
 
-const getRegions = (options: ServicesOptions) => async (): Promise<
+const getRegions = (options: HygieneServicesOptions) => async (): Promise<
   RegionModel[]
 > => {
   const { endpoint, fetch } = options;
@@ -186,7 +191,7 @@ const getRegions = (options: ServicesOptions) => async (): Promise<
   return response.regions;
 };
 
-export const getRegion = (options: ServicesOptions) => async (
+export const getRegion = (options: HygieneServicesOptions) => async (
   id: string,
 ): Promise<RegionModel> => {
   const { endpoint, fetch } = options;
@@ -199,7 +204,7 @@ export const getRegion = (options: ServicesOptions) => async (
   return response;
 };
 
-export const getSchemeTypes = (options: ServicesOptions) => async () => {
+export const getSchemeTypes = (options: HygieneServicesOptions) => async () => {
   const { endpoint, fetch } = options;
   const response = await fetch.get<{ schemeTypes: SchemeTypeModel[] }>(
     `${endpoint}/schemeTypes`,
@@ -213,7 +218,7 @@ export const getSchemeTypes = (options: ServicesOptions) => async () => {
   return response.schemeTypes;
 };
 
-export const getSortOptions = (options: ServicesOptions) => async () => {
+export const getSortOptions = (options: HygieneServicesOptions) => async () => {
   const { endpoint, fetch } = options;
   const response = await fetch.get<{ sortOptions: SortOptionModel[] }>(
     `${endpoint}/sortOptions`,
