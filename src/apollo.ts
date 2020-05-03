@@ -9,7 +9,7 @@ import { context } from './graphql/context';
 const schemaPath = path.join(__dirname, './graphql/schema/**/*.graphql');
 const typeDefs = importSchema(schemaPath);
 
-const formatError = (error: GraphQLError) => {
+export const formatError = (error: GraphQLError) => {
   logger.error(error);
   const { name, message, stack } = error;
 
@@ -34,4 +34,5 @@ export const apollo = new ApolloServer({
   context,
   formatError,
   uploads: false,
+  mocks: false,
 });
