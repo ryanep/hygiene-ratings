@@ -5,7 +5,10 @@ export const get = async <TResponse>(
   url: RequestInfo,
   init?: RequestInit,
 ): Promise<TResponse> => {
-  const response = await nodeFetch(url, init);
+  const response = await nodeFetch(url, {
+    ...init,
+    method: 'GET',
+  });
 
   if (!response.ok) {
     throw new Error(response.statusText);
