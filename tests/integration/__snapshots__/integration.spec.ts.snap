@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integration authorities 1`] = `
+Object {
+  "authorities": Array [
+    Object {
+      "email": "Email",
+      "id": "1",
+      "name": "Name",
+    },
+  ],
+}
+`;

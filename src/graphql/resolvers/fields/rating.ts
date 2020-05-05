@@ -6,7 +6,7 @@ export const Rating: RatingResolvers = {
   schemaType: async (root, args, context) => {
     const types = await context.services.hygiene.getSchemeTypes();
     const type = types.find(
-      (schemaType) => schemaType.schemeTypeid === root.ratingId,
+      (schemaType) => schemaType.schemeTypeid === root.schemeTypeId,
     );
     return type;
   },

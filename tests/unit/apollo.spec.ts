@@ -1,5 +1,5 @@
 import { GraphQLError } from 'graphql';
-import { formatError } from '../src/apollo';
+import { formatError } from '#/apollo';
 
 describe('apollo', () => {
   describe('formatError', () => {

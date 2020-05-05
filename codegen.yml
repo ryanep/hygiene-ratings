@@ -28,3 +28,4 @@ generates:
       showUnusedMappers: true
       useIndexSignature: true
       avoidOptionals: true
+      noSchemaStitching: true

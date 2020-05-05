@@ -65,8 +65,8 @@ export interface EstablishmentModel {
   };
   SchemeType: string;
   geocode: {
-    longitude: string;
-    latitude: string;
+    longitude?: string;
+    latitude?: string;
   };
   RightToReply: string;
   Distance?: number;
