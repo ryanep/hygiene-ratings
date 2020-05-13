@@ -145,8 +145,8 @@ export type QueryEstablishmentsArgs = {
   localAuthorityId: Maybe<Scalars['String']>;
   countryId: Maybe<Scalars['String']>;
   sortOptionKey: Maybe<Scalars['String']>;
-  pageNumber: Maybe<Scalars['String']>;
-  pageSize: Maybe<Scalars['String']>;
+  pageNumber: Maybe<Scalars['Int']>;
+  pageSize: Maybe<Scalars['Int']>;
 };
 
 export type QueryEstablishmentArgs = {
@@ -280,6 +280,7 @@ export type ResolversTypes = ResolversObject<{
   SchemeType: ResolverTypeWrapper<SchemeTypeModel>;
   SortOption: ResolverTypeWrapper<SortOptionModel>;
   Query: ResolverTypeWrapper<{}>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -298,6 +299,7 @@ export type ResolversParentTypes = ResolversObject<{
   SchemeType: SchemeTypeModel;
   SortOption: SortOptionModel;
   Query: {};
+  Int: Scalars['Int'];
 }>;
 
 export type AuthorityResolvers<

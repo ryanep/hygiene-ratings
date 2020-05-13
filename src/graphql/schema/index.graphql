@@ -81,8 +81,8 @@ type Query {
     localAuthorityId: String
     countryId: String
     sortOptionKey: String
-    pageNumber: String
-    pageSize: String
+    pageNumber: Int
+    pageSize: Int
   ): [Establishment]!
   establishment(id: ID!): Establishment!
   ratings: [Rating]!
