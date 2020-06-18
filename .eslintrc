@@ -20,6 +20,7 @@
     "import/order": [
       "error",
       {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
@@ -27,7 +28,7 @@
         "pathGroups": [
           {
             "pattern": "#/**",
-            "group": "external"
+            "group": "internal"
           }
         ]
       }

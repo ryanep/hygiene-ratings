@@ -1,3 +1,4 @@
+import querystring from 'query-string';
 import {
   AuthorityModel,
   BusinessTypeModel,
@@ -9,7 +10,6 @@ import {
   SchemeTypeModel,
   SortOptionModel,
 } from '#/types/models';
-import querystring from 'query-string';
 import {
   EstablishmentFilterOptions,
   HygieneServiceConstructor,

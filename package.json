@@ -8,7 +8,7 @@
     "dev": "nodemon",
     "build": "ttsc && rsync -am --include='*.graphql' --include='*/' --exclude='*' './src/graphql' './dist'",
     "test": "jest",
-    "lint": "eslint './src/**/*.ts'",
+    "lint": "eslint '**/*.ts'",
     "fmt": "prettier --write './src/**/*.ts'",
     "codegen": "graphql-codegen --config codegen.yml"
   },

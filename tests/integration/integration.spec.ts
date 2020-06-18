@@ -1,10 +1,10 @@
 import path from 'path';
-import gql from 'graphql-tag';
 import { ApolloServer } from 'apollo-server-express';
 import { createTestClient } from 'apollo-server-testing';
 import { importSchema } from 'graphql-import';
-import { resolvers } from '#/graphql/resolvers';
+import gql from 'graphql-tag';
 import { ApolloContext } from '#/graphql/context/types';
+import { resolvers } from '#/graphql/resolvers';
 
 describe('integration', () => {
   const schemaPath = path.join(
