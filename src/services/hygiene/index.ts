@@ -1,19 +1,19 @@
-import querystring from 'query-string';
 import {
-  CountryModel,
-  RegionModel,
   AuthorityModel,
   BusinessTypeModel,
+  CountryModel,
   EstablishmentModel,
-  SchemeTypeModel,
-  SortOptionModel,
   RatingModel,
   RatingOperatorModel,
+  RegionModel,
+  SchemeTypeModel,
+  SortOptionModel,
 } from '#/types/models';
+import querystring from 'query-string';
 import {
-  HygieneServicesOptions,
-  HygieneServiceConstructor,
   EstablishmentFilterOptions,
+  HygieneServiceConstructor,
+  HygieneServicesOptions,
 } from './types';
 
 export const getAuthorities = (options: HygieneServicesOptions) => async () => {

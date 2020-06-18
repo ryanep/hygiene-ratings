@@ -1,7 +1,7 @@
-import './env';
 import { createApp } from './app';
-import { logger } from './utils/logger';
+import './env';
 import { config } from './config';
+import { logger } from './utils/logger';
 
 const app = createApp();
 

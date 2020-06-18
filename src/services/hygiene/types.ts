@@ -1,15 +1,15 @@
-import { Fetch } from '#/utils/fetch/types';
 import {
   AuthorityModel,
-  CountryModel,
-  RegionModel,
   BusinessTypeModel,
+  CountryModel,
   EstablishmentModel,
-  SchemeTypeModel,
-  SortOptionModel,
   RatingModel,
   RatingOperatorModel,
+  RegionModel,
+  SchemeTypeModel,
+  SortOptionModel,
 } from '#/types/models';
+import { Fetch } from '#/utils/fetch/types';
 
 export interface HygieneServicesOptions {
   fetch: Fetch;
