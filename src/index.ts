@@ -1,5 +1,5 @@
-import { createApp } from './app';
 import './env';
+import { createApp } from './app';
 import { config } from './config';
 import { logger } from './utils/logger';
 
