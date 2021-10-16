@@ -1,0 +1,29 @@
+service: apollo-server-lambda
+provider:
+  name: aws
+  stage: production
+  runtime: nodejs14.x
+  region: eu-west-2
+functions:
+  graphql:
+    handler: src/apollo.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-domain-manager
+custom:
+  webpack:
+    includeModules: true
+  customDomain:
+    domainName: hygiene-ratings.ryanep.com
+    createRoute53Record: false

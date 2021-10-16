@@ -1,5 +1,5 @@
 import path from 'path';
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-lambda';
 import { GraphQLError } from 'graphql';
 import { importSchema } from 'graphql-import';
 import { logger } from '#/utils/logger';
@@ -33,6 +33,7 @@ export const apollo = new ApolloServer({
   resolvers,
   context,
   formatError,
-  uploads: false,
   mocks: false,
 });
+
+export const graphqlHandler = apollo.createHandler();
